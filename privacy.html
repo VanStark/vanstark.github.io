@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — m4-offsite-backup</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { max-width: 46rem; margin: 3rem auto; padding: 0 1.25rem;
+         font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+  h1 { font-size: 1.5rem; }
+  code { background: #f2f2f2; padding: .1rem .3rem; border-radius: 4px; font-size: .9em; }
+  footer { margin-top: 3rem; border-top: 1px solid #ddd; padding-top: 1rem; color: #666; font-size: .9rem; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #111; color: #eee; } code { background: #222; }
+    footer { border-color: #333; color: #aaa; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Privacy Policy</h1>
+<p><strong>Application:</strong> m4-offsite-backup &nbsp;·&nbsp;
+   <strong>Last updated:</strong> 2026-11-25</p>
+
+<h2>1. Scope</h2>
+<p>
+  This policy covers the application <code>m4-offsite-backup</code>, a personal command-line backup client
+  that the operator runs on their own computer. The application has exactly one user: its operator. It is not
+  published, distributed, or made available to any other person, and it has no server-side component.
+</p>
+
+<h2>2. What Google user data the application accesses</h2>
+<p>
+  The application requests one OAuth scope: <code>https://www.googleapis.com/auth/drive.file</code>.
+  Google defines this scope as per-file access limited to files the application creates or that the user
+  opens with the application. Consequently the application can only see and act on:
+</p>
+<ul>
+  <li>the single folder it creates in the user's Drive, and</li>
+  <li>the backup archive files and checksum files it uploads into that folder.</li>
+</ul>
+<p>
+  The application has no access to any other file in the Google account, and no access to Gmail, Calendar,
+  Contacts, Photos, or account metadata.
+</p>
+
+<h2>3. How the data is used</h2>
+<p>The data is used for one purpose only: maintaining an offsite copy of the operator's own encrypted backups. Concretely:</p>
+<ul>
+  <li>uploading encrypted archive files and their SHA-256 checksum files into the application's own Drive folder;</li>
+  <li>listing that folder in order to apply a retention rule that keeps only the most recent archives;</li>
+  <li>permanently deleting the application's own superseded archives from that folder (they are not moved to
+      the Drive trash);</li>
+  <li>downloading one of the application's own archives back to local storage to verify its checksum.</li>
+</ul>
+<p>No other processing takes place. The application performs no analytics, profiling, indexing, or content inspection.</p>
+
+<h2>4. Storage, encryption and retention</h2>
+<p>
+  Archives are encrypted locally by the operator before upload, using <a href="https://age-encryption.org/">age</a>
+  for archive files and AES-256 for disk images. Google therefore stores ciphertext; the encryption keys are held
+  by the operator and are never sent to Google or to any third party. Retention in the Drive folder is limited to
+  the most recent archives produced by the application; older ones are deleted by the application itself. Local
+  copies remain under the operator's control.
+</p>
+
+<h2>5. Sharing and third parties</h2>
+<p>
+  The application does not share, sell, transfer, or disclose Google user data to any third party. It does not
+  use Google user data for advertising, for training machine-learning models, or for any purpose unrelated to the
+  backup function described above. There is no intermediary service: the application talks directly to the Google
+  Drive API from the operator's computer.
+</p>
+
+<h2>6. Limited Use</h2>
+<p>
+  The application's use of Google user data adheres to the
+  <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>,
+  including its Limited Use requirements. Data obtained through the Drive API is used only to provide the
+  user-facing backup function described above, is not transferred to others except as necessary to provide that
+  function, and is not used for advertising.
+</p>
+
+<h2>7. Revocation and deletion</h2>
+<p>
+  The operator can revoke the application's access at any time at
+  <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>. After revocation the
+  application can no longer access any file. Data already stored in Drive can be deleted by the operator directly
+  in Google Drive, or by letting the application's retention rule remove it, and the local archives and keys can be
+  deleted from the operator's own storage at any time. No copy of the data exists anywhere else.
+</p>
+
+<h2>8. Changes</h2>
+<p>If the application's data practices change, this page will be updated before the change takes effect.</p>
+
+<h2>9. Contact</h2>
+<p>Questions about this policy: q1396818024 (at) gmail (dot) com</p>
+
+<footer>
+  <a href="index.html">Back to application description</a> &nbsp;·&nbsp; <a href="terms.html">Terms of Service</a>
+</footer>
+
+</body>
+</html>

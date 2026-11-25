@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>m4-offsite-backup — personal encrypted offsite backup client</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { max-width: 46rem; margin: 3rem auto; padding: 0 1.25rem; line-height: 1.65;
+         font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+  h1 { font-size: 1.6rem; margin-bottom: .25rem; }
+  .sub { color: #666; margin-top: 0; }
+  code { background: #f2f2f2; padding: .1rem .3rem; border-radius: 4px; font-size: .9em; }
+  footer { margin-top: 3rem; border-top: 1px solid #ddd; padding-top: 1rem; color: #666; font-size: .9rem; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #111; color: #eee; }
+    code { background: #222; }
+    footer { border-color: #333; color: #aaa; }
+    .sub { color: #aaa; }
+  }
+</style>
+</head>
+<body>
+
+<h1>m4-offsite-backup</h1>
+<p class="sub">A personal, single-user encrypted offsite backup client.</p>
+
+<h2>What this application is</h2>
+<p>
+  <code>m4-offsite-backup</code> is a privately operated command-line tool, built on the open-source
+  <a href="https://rclone.org/">rclone</a> project. It is used by exactly one person — its owner — to copy
+  already-encrypted backup archives from the owner's own local storage to the owner's own Google Drive.
+  It is not distributed, not offered to the public, and has no other users.
+</p>
+
+<h2>What Google user data it accesses</h2>
+<p>
+  The application requests a single OAuth scope: <code>https://www.googleapis.com/auth/drive.file</code>.
+  Under that scope Google grants access <strong>only to files that this application itself creates</strong>.
+  The application cannot see, read, modify, or delete any other file in the account: not the owner's
+  documents, photos, mail, or any file created by another application.
+</p>
+
+<h2>What it does with that data</h2>
+<ul>
+  <li>Uploads encrypted archive files (identified by file name and SHA-256 checksum) into one folder that
+      the application creates in the owner's Drive.</li>
+  <li>Lists that same folder to apply a retention rule, and deletes its own older archives from that folder,
+      permanently (files are not sent to the Drive trash).</li>
+  <li>Downloads one of its own archives back to local storage to verify the checksum after upload.</li>
+</ul>
+<p>
+  That is the entire data flow. Nothing else is read, collected, transmitted, or transferred to any third
+  party. The archives are encrypted locally with <a href="https://age-encryption.org/">age</a> (or, for disk
+  images, with AES-256) <em>before</em> they are uploaded, so the stored objects are ciphertext.
+</p>
+
+<h2>Privacy and terms</h2>
+<p>
+  <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="terms.html">Terms of Service</a>
+</p>
+
+<footer>
+  Operator and sole user: the owner of this GitHub account ·
+  Contact: q1396818024 (at) gmail (dot) com
+</footer>
+
+</body>
+</html>
